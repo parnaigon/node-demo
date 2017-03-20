@@ -4,7 +4,7 @@ var mysql = require('mysql')
 
 var app = express()
 var db =  {
-  host:'128.199.119.79',
+  host:'localhost',
   username:'imarket',
   password:'p@ssword',
   database:'imarket'
@@ -33,7 +33,7 @@ function showStatus(req, res) {
 function showList(req, res) {
   pool.query('select * from post',
   function (err, data) {
-    res.render('list.html', {post:data})
+    res.render('list.html', {data:data})
   })
 }
 
