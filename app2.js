@@ -17,6 +17,7 @@ app.get('/list', showList);
 app.get('/status', showStatus)
 app.get('/register', showRegisterPage)
 app.post('/register', body, saveNewUser)
+app.get('/login', showLoginPage)
 app.use( express.static('public') )
 app.use( showError )
 
@@ -53,4 +54,8 @@ function saveNewUser(req, res) {
     (err, data) => {
       res.redirect('login.html')
     })
+}
+
+function showLoginPage(req, res) {
+  res.render('login.html')
 }
