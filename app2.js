@@ -14,6 +14,7 @@ app.engine('html', require('ejs').renderFile)
 app.get('/', showHome)
 app.get('/list', showList);
 app.get('/status', showStatus)
+app.get('/register', showRegisterPage)
 app.use( express.static('public') )
 app.use( showError )
 
@@ -23,6 +24,10 @@ function showStatus(req, res) {
 
 function showHome(req, res) {
   res.render('index.html')
+}
+
+function showRegisterPage(req, res) {
+  res.render('register.html')
 }
 
 function showError(req, res) {
