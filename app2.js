@@ -1,5 +1,6 @@
 var express = require('express')
 var app = express()
+var body = require('body-parser').urlencoded({extended:false})
 app.listen(2000)
 var mysql = require('mysql');
 var db = {
@@ -15,6 +16,7 @@ app.get('/', showHome)
 app.get('/list', showList);
 app.get('/status', showStatus)
 app.get('/register', showRegisterPage)
+app.post('/register', body, saveNewUser)
 app.use( express.static('public') )
 app.use( showError )
 
@@ -40,4 +42,9 @@ function showList(req, res) {
       res.render('list.html', {post: data})
     }
   )
+}
+
+function saveNewUser(req, res) {
+  console.log(req.body)
+  res.send('done')
 }
